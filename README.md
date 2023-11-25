@@ -42,4 +42,6 @@ The Lyra cryptocurrency launchpad presents a secure and open-source platform, en
 <img width="1514" alt="Screenshot 2023-11-25 at 14 19 07" src="https://github.com/zdanl/lyra/assets/114028070/983f0d1f-4093-478c-af93-b50d6d26722f">
 </p>
 
-The Frontend is React-NextJS.
+**Utopia**: The Frontend is React-NextJS. It's a straightforward directory tree with Typescript .tsx files. 
+
+**Lyra**: The Backend is NestJS-MongoDB and Appwrite using Prisma.
