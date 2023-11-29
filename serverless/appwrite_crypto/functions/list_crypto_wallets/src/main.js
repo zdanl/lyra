@@ -1,11 +1,9 @@
 import { ID, Client, Databases } from 'node-appwrite';
-import { ethers } from 'ethers';
 
-// This is the Ethers.js Appwrite function
-// It's executed each time a user is created or upon request
-// It returns the wallet address and timestamp of creation
-// The new wallet is stored in the Lyra database 
-// wallets collection
+// This is the retrieval Appwrite function for crypto wallets
+// It's executed each time a user visits the /wallet page
+// or upon API request. It returns in JSON the addresses
+// and balances, network
 // @zdanl
 
 export default async ({ req, res, log, error }) => {
@@ -17,28 +15,16 @@ export default async ({ req, res, log, error }) => {
 
   const databases = new Databases(client);
 
-  log('Creating Ethereum Wallet for User ...');
-  const wallet = ethers.Wallet.createRandom();
-  // Get the private key and mnemonic (seed phrase)
-  const privateKey = wallet.privateKey;
-  const mnemonic = wallet.mnemonic.phrase;
-  log(`Created Wallet ${wallet.address}`);
+  log('Retrieving Crypto Wallets for User ...');
 
-  const timestamp = new Date().getTime();
-
-  await databases.createDocument('lyra', 'wallets', ID.unique(), {
-    address: wallet.address,
-    timestamp: timestamp,
-    private_key: privateKey,
-    seedphrase: mnemonic,
-    network: 'Ethereum',
-    is_locked: true,
+  // see if there is a non-root way to deal with appwrite document ownership
+  const docs = await databases.listDocuments('lyra', 'wallets', [
     owner: '6567788da1bb6fa49de6'
-  });
+  ]);
+
+  log(docs);
 
   // `res.json()` is a handy helper for sending JSON
-  return res.json({
-    address: wallet.address,
-    timestamp: timestamp
-  });
+  // you must iterate/map through this an filter privatekeys etc. 
+  return res.json(docs);
 };
