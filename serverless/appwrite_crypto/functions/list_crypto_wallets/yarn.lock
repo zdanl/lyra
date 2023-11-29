@@ -34,7 +34,7 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-axios@^1.3.6:
+axios@^1.4.0:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.2.tgz#de67d42c755b571d3e698df1b6504cde9b0ee9f2"
   integrity sha512-7i24Ri4pmDRfJTR7LDBhsOTtcm+9kjX5WiY1X3wIisx6G9So3pfMkEiU7emUBe46oceVImccTEM3k6C5dbVW8A==
@@ -94,12 +94,12 @@ mime-types@^2.1.12:
   dependencies:
     mime-db "1.52.0"
 
-node-appwrite@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/node-appwrite/-/node-appwrite-9.0.0.tgz#75d892e83f3b820a32b4bf888d5403afdc59e577"
-  integrity sha512-iTcHbuaJfr6bP/HFkRVV+FcaumKkbINqZyypQdl+tYxv6Dx0bkB/YKUXGYfTkgP18TLPWQQB++OGQhi98dlo2w==
+node-appwrite@^11.1.0:
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/node-appwrite/-/node-appwrite-11.1.0.tgz#9fb28235e198ecd05084d70a112fd5f3c6bfac52"
+  integrity sha512-yA6gNhgEPaxRtPtd7vr7rE3nsl/ZjPsUzGwGe7GXwWShzKp1ngUOdznYuack5SZVttX52P8ToqnrHOWhgiDzVA==
   dependencies:
-    axios "^1.3.6"
+    axios "^1.4.0"
     form-data "^4.0.0"
 
 prettier@^3.0.0:

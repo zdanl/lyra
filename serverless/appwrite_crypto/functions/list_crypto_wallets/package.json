@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "ethers": "^6.9.0",
-    "node-appwrite": "^9.0.0"
+    "node-appwrite": "^11.1.0"
   },
   "devDependencies": {
     "prettier": "^3.0.0"
