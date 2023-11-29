@@ -19,7 +19,8 @@ export default async ({ req, res, log, error }) => {
 
   // see if there is a non-root way to deal with appwrite document ownership
   const docs = await databases.listDocuments('lyra', 'wallets', [
-    owner: '6567788da1bb6fa49de6'
+    Query.select(["address", "network"]),
+    Query.equal("owner", ['6567788da1bb6fa49de6'])
   ]);
 
   log(docs);
