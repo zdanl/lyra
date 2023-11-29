@@ -1,11 +1,13 @@
-import { Client, Account} from 'appwrite';
+import { Functions, Client, Account } from 'appwrite';
 
 export const client = new Client();
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('lyra'); // Replace with your project ID
+    .setProject('lyra');
 
 export const account = new Account(client);
+export const functions = new Functions(client);
+
 export { ID } from 'appwrite';
 
