@@ -6,6 +6,11 @@ import { ID, Query, Client, Databases } from 'node-appwrite';
 // and balances, network
 // @zdanl
 
+// @@TODO Security
+// currently everybody who knows a users static internal id
+// can retrieve his/her wallets. ideally one would need to be
+// authenticated as that user
+
 export default async ({ req, res, log, error }) => {
   // Invoking the Appwrite SDK?
   const client = new Client()
@@ -14,14 +19,15 @@ export default async ({ req, res, log, error }) => {
     .setKey(process.env.APPWRITE_API_KEY);
 
   const databases = new Databases(client);
+  const user_id = req.query.user_id;
 
-  log('Retrieving Crypto Wallets for User ...');
+  log(`Retrieving Crypto Wallets for User ${user_id}`);
 
   // see if there is a non-root way to deal with appwrite document ownership
   
   const docs = await databases.listDocuments('lyra', 'wallets', [
     Query.select(["address", "network"]),
-    Query.equal("owner", ['6567788da1bb6fa49de6'])
+    Query.equal("owner", [user_id])
   ]);
  
   
@@ -32,5 +38,5 @@ export default async ({ req, res, log, error }) => {
 
   // `res.json()` is a handy helper for sending JSON
   // you must iterate/map through this an filter privatekeys etc. 
-  return res.json(docs);
+  return res.json(docs.documents);
 };
