@@ -1,4 +1,4 @@
-import { ID, Client, Databases } from 'node-appwrite';
+import { ID, Query, Client, Databases } from 'node-appwrite';
 
 // This is the retrieval Appwrite function for crypto wallets
 // It's executed each time a user visits the /wallet page

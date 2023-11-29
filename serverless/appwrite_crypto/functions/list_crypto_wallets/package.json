@@ -1,5 +1,5 @@
 {
-  "name": "starter-template",
+  "name": "list_crypto_wallets",
   "version": "1.0.0",
   "description": "",
   "main": "src/main.js",
@@ -8,7 +8,6 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "ethers": "^6.9.0",
     "node-appwrite": "^11.1.0"
   },
   "devDependencies": {
