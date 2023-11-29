@@ -27,7 +27,7 @@ export default async ({ req, res, log, error }) => {
   
   const docs = await databases.listDocuments('lyra', 'wallets', [
     Query.select(["address", "network"]),
-    Query.equal("owner", ["65679ed850c5e748541f"])
+    Query.equal("owner", [user_id])
   ]);
  
   
