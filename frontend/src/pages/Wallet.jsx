@@ -13,9 +13,24 @@ Wallet.propTypes = {
 
 function Wallet(props) {
     const user = useUser();
-    const [walletsResponse, setWalletsResponse] = useState("{}");
-    
+    const [walletsResponse, setWalletsResponse] = useState("[]");
+   
+    async function get_wallets() {
+      console.log(`Retrieving Crypto Wallets for ${user.current.$id} ...`);
+         const resp = await functions.createExecution(
+            'list_crypto_wallets',
+            JSON.stringify({ 'foo': 'bar' }),
+            false,
+            `/?user_id=${user.current.$id}`,
+            'GET',
+            { 'X-Custom-Header': '123' }
+        )
+        setWalletsResponse(resp.responseBody);
+
+    }
+
     useEffect(() => {
+        setTimeout(() => {
          console.log(`Retrieving Crypto Wallets for ${user.current.$id} ...`);
          (async () => {
          const resp = await functions.createExecution(
@@ -28,7 +43,7 @@ function Wallet(props) {
         )
         setWalletsResponse(resp.responseBody);
         })();
-    }, []);
+    }, 1000);}, []);
 
     const [dataCryptoTab] = useState([
         {
@@ -77,7 +92,7 @@ function Wallet(props) {
                                     <p>$12,068.83</p>
                                     </div>
                                     <div className="right">
-                                    <form action="/wallet">
+                                    <form onSubmit={(e) => { e.preventDefault(); get_wallets() }}>
                                         <div className="form-group">
                                         <input type="text" placeholder="Search" />
                                         <svg
@@ -101,16 +116,12 @@ function Wallet(props) {
                                             <option value="3">USDC</option>
                                         </select>
                                         </div>
-                                        <button type="submit" className="btn-action">
+                                        <button onClick={(e) => { e.preventDefault(); get_wallets() }} type="submit" className="btn-action">
                                         Show balance
                                         </button>
                                     </form>
                                     </div>
                                 </div>
-                                </div>
-
-                                <div>
-                                <span>{walletsResponse}</span>
                                 </div>
 
                                 <div className="coin-list-wallet">
@@ -126,6 +137,7 @@ function Wallet(props) {
                                     </tr>
                                     </thead>
                                     <tbody>
+                                     {JSON.parse(walletsResponse).map(wallet => (
                                     <tr>
                                         <td className="number">
                                         <span>1</span>
@@ -136,12 +148,12 @@ function Wallet(props) {
                                             ><span className="path2"></span
                                         ></span>
                                         <p>
-                                            <span className="boild">USDT</span>
-                                            <span className="unit">Tether USD</span>
+                                            <span className="boild">{wallet.network}</span>
+                                            <span className="unit">{wallet.network}</span>
                                         </p>
                                         </td>
                                         <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
+                                        <span className="boild">{wallet.address}</span>
                                         </td>
                                         <td>
                                         <span className="boild">0.2785689852 BTC</span>
@@ -156,483 +168,7 @@ function Wallet(props) {
                                         <span className="unit">$10,098.36</span>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td className="number">
-                                        <span>2</span>
-                                        </td>
-                                        <td className="asset">
-                                        <span className="icon-eth"
-                                            ><span className="path1"></span
-                                            ><span className="path2"></span
-                                            ><span className="path3"></span
-                                            ><span className="path4"></span
-                                        ></span>
-                                        <p>
-                                            <span className="boild">Ethereum</span>
-                                            <span className="unit">Tether USD</span>
-                                        </p>
-                                        </td>
-                                        <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="number">
-                                        <span>3</span>
-                                        </td>
-                                        <td className="asset">
-                                        <span className="icon-bnb"
-                                            ><span className="path1"></span
-                                            ><span className="path2"></span
-                                            ><span className="path3"></span
-                                            ><span className="path4"></span
-                                            ><span className="path5"></span
-                                            ><span className="path6"></span
-                                        ></span>
-                                        <p>
-                                            <span className="boild">Binance</span>
-                                            <span className="unit">BNB</span>
-                                        </p>
-                                        </td>
-                                        <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="number">
-                                        <span>4</span>
-                                        </td>
-                                        <td className="asset">
-                                        <span className="icon-sol"
-                                            ><span className="path1"></span
-                                            ><span className="path2"></span
-                                            ><span className="path3"></span
-                                            ><span className="path4"></span
-                                            ><span className="path5"></span
-                                        ></span>
-                                        <p>
-                                            <span className="boild">Solana</span>
-                                            <span className="unit">Tether USD</span>
-                                        </p>
-                                        </td>
-                                        <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="number">
-                                        <span>5</span>
-                                        </td>
-                                        <td className="asset">
-                                        <span className="icon-btc"
-                                            ><span className="path1"></span
-                                            ><span className="path2"></span
-                                        ></span>
-                                        <p>
-                                            <span className="boild">Solana</span>
-                                            <span className="unit">Tether USD</span>
-                                        </p>
-                                        </td>
-                                        <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="number">
-                                        <span>6</span>
-                                        </td>
-                                        <td className="asset">
-                                        <span className="icon-btc"
-                                            ><span className="path1"></span
-                                            ><span className="path2"></span
-                                        ></span>
-                                        <p>
-                                            <span className="boild">XRP</span>
-                                            <span className="unit">Tether USD</span>
-                                        </p>
-                                        </td>
-                                        <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="number">
-                                        <span>7</span>
-                                        </td>
-                                        <td className="asset">
-                                        <span className="icon-ada"
-                                            ><span className="path1"></span
-                                            ><span className="path2"></span
-                                            ><span className="path3"></span
-                                            ><span className="path4"></span
-                                            ><span className="path5"></span
-                                            ><span className="path6"></span
-                                            ><span className="path7"></span
-                                            ><span className="path8"></span
-                                            ><span className="path9"></span
-                                        ></span>
-                                        <p>
-                                            <span className="boild">Cardano</span>
-                                            <span className="unit">Tether USD</span>
-                                        </p>
-                                        </td>
-                                        <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="number">
-                                        <span>8</span>
-                                        </td>
-                                        <td className="asset">
-                                        <span className="icon-avax"
-                                            ><span className="path1"></span
-                                            ><span className="path2"></span
-                                            ><span className="path3"></span
-                                            ><span className="path4"></span
-                                        ></span>
-                                        <p>
-                                            <span className="boild">Avalanche</span>
-                                            <span className="unit">Tether USD</span>
-                                        </p>
-                                        </td>
-                                        <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="number">
-                                        <span>9</span>
-                                        </td>
-                                        <td className="asset">
-                                        <span className="icon-tether"
-                                            ><span className="path1"></span
-                                            ><span className="path2"></span
-                                        ></span>
-                                        <p>
-                                            <span className="boild">Tether</span>
-                                            <span className="unit">Tether USD</span>
-                                        </p>
-                                        </td>
-                                        <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="number">
-                                        <span>10</span>
-                                        </td>
-                                        <td className="asset">
-                                        <span className="icon-btc"
-                                            ><span className="path1"></span
-                                            ><span className="path2"></span
-                                        ></span>
-                                        <p>
-                                            <span className="boild">USDT</span>
-                                            <span className="unit">Tether USD</span>
-                                        </p>
-                                        </td>
-                                        <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="number">
-                                        <span>11</span>
-                                        </td>
-                                        <td className="asset">
-                                        <span className="icon-btc"
-                                            ><span className="path1"></span
-                                            ><span className="path2"></span
-                                        ></span>
-                                        <p>
-                                            <span className="boild">USDT</span>
-                                            <span className="unit">Tether USD</span>
-                                        </p>
-                                        </td>
-                                        <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="number">
-                                        <span>12</span>
-                                        </td>
-                                        <td className="asset">
-                                        <span className="icon-eth"
-                                            ><span className="path1"></span
-                                            ><span className="path2"></span
-                                            ><span className="path3"></span
-                                            ><span className="path4"></span
-                                        ></span>
-                                        <p>
-                                            <span className="boild">Ethereum</span>
-                                            <span className="unit">Tether USD</span>
-                                        </p>
-                                        </td>
-                                        <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="number">
-                                        <span>13</span>
-                                        </td>
-                                        <td className="asset">
-                                        <span className="icon-bnb"
-                                            ><span className="path1"></span
-                                            ><span className="path2"></span
-                                            ><span className="path3"></span
-                                            ><span className="path4"></span
-                                            ><span className="path5"></span
-                                            ><span className="path6"></span
-                                        ></span>
-                                        <p>
-                                            <span className="boild">Binance</span>
-                                            <span className="unit">BNB</span>
-                                        </p>
-                                        </td>
-                                        <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="number">
-                                        <span>14</span>
-                                        </td>
-                                        <td className="asset">
-                                        <span className="icon-sol"
-                                            ><span className="path1"></span
-                                            ><span className="path2"></span
-                                            ><span className="path3"></span
-                                            ><span className="path4"></span
-                                            ><span className="path5"></span
-                                        ></span>
-                                        <p>
-                                            <span className="boild">Solana</span>
-                                            <span className="unit">Tether USD</span>
-                                        </p>
-                                        </td>
-                                        <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="number">
-                                        <span>15</span>
-                                        </td>
-                                        <td className="asset">
-                                        <span className="icon-btc"
-                                            ><span className="path1"></span
-                                            ><span className="path2"></span
-                                        ></span>
-                                        <p>
-                                            <span className="boild">Solana</span>
-                                            <span className="unit">Tether USD</span>
-                                        </p>
-                                        </td>
-                                        <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="number">
-                                        <span>16</span>
-                                        </td>
-                                        <td className="asset">
-                                        <span className="icon-btc"
-                                            ><span className="path1"></span
-                                            ><span className="path2"></span
-                                        ></span>
-                                        <p>
-                                            <span className="boild">XRP</span>
-                                            <span className="unit">Tether USD</span>
-                                        </p>
-                                        </td>
-                                        <td className="color-success">
-                                        <span className="boild">7.46% APR</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                        <td>
-                                        <span className="boild">0.2785689852 BTC</span>
-                                        <span className="unit">$10,098.36</span>
-                                        </td>
-                                    </tr>
+                                  ))}
                                     </tbody>
                                 </table>
                                 </div>

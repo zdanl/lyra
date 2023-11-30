@@ -29,7 +29,7 @@ function Sale01(props) {
                 </div>
                 <div className="col-md-5">
                     <div className="button">
-                    <Link to="#">Create Account</Link>
+                    <Link to="/register">Create Account</Link>
                     </div>
                 </div>
                 </div>

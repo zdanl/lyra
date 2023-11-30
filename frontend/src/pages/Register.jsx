@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState}  from 'react';
 import PropTypes from 'prop-types';
 import Sale01 from '../components/sale/Sale01';
-
-
+import { useUser } from "../lib/context/user";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import PageTitle from '../components/pagetitle';
@@ -14,6 +13,10 @@ Register.propTypes = {
 };
 
 function Register(props) {
+    const user = useUser();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     return (
         <div>
 
@@ -46,14 +49,16 @@ function Register(props) {
 
                     <TabPanel>
                         <div className="content-inner">
-                            <form>
+                            <form onSubmit={(e) => { e.preventDefault(); user.register(email, password)}}>
                                 <div className="form-group">
                                 <label for="exampleInputEmail1">Email/ID</label>
                                 <input
                                     type="email"
+                                    onChange={e => setEmail(e.target.value)}
                                     className="form-control"
                                     id="exampleInputEmail1"
                                     placeholder="Please fill in the email form."
+                                    value={email}
                                 />
                                 </div>
                                 <div className="form-group">
@@ -66,60 +71,15 @@ function Register(props) {
                                 >
                                 <input
                                     type="password"
+                                    onChange={e => setPassword(e.target.value)}
+                                    value={password}
                                     className="form-control mb-10"
                                     placeholder="Please enter a password."
                                 />
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    placeholder="Please re-enter your password."
-                                />
-                                </div>
-                                <div className="form-group">
-                                <label
-                                    >NickName
-                                    <span className="fs-14"
-                                    >(Excluding special characters)</span
-                                    ></label
-                                >
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Enter Email"
-                                />
-                                </div>
-                                <div className="form-group">
-                                <label>Country </label>
-                                <select className="form-control">
-                                    <option>South Korea (+82)</option>
-                                    <option>Vietnamese (+84)</option>
-                                    <option>South Korea (+82)</option>
-                                    <option>South Korea (+82)</option>
-                                </select>
-                                </div>
-                                <div className="form-group">
-                                <label
-                                    >Phone
-                                    <span className="fs-14">(Enter numbers only)</span></label
-                                >
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="ex) 01012345678 (without '-')"
-                                />
                                 </div>
 
-                                <div className="form-group">
-                                <label>UID Code </label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Please enter your invitation code."
-                                />
-                                </div>
-
-                                <button type="submit" className="btn-action">
-                                Pre-Registration
+                                <button type="submit" onSubmit={(e) => { e.preventDefault(); user.register(email, password)}} className="btn-action">
+                                Submission
                                 </button>
                                 <div className="bottom">
                                 <p>Already have an account?</p>
