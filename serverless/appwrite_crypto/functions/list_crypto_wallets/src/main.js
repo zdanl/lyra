@@ -33,7 +33,7 @@ export default async ({ req, res, log, error }) => {
     Query.equal("owner", [user_id])
   ]);
 
-  const finalResponse = [];
+  let finalResponse = [];
 
   docs.documents.map(doc => {
       log(`Currently iterating ${doc.address}`);
