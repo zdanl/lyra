@@ -35,7 +35,7 @@ function Wallet(props) {
     async function create_wallet() {
       console.log(`Creating Crypto Wallet for ${user.current.$id} ...`);
          const resp = await functions.createExecution(
-            'create_crypto_wallet',
+            'generate_ethereum_wallet',
             JSON.stringify({ 'foo': 'bar' }),
             false,
             `/?user_id=${user.current.$id}`,

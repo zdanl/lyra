@@ -20,12 +20,14 @@ import Login from "./Login";
 import Register from "./Register";
 import Contact from "./Contact";
 import Faq from "./Faq";
+import Illuminati from "./Illuminati";
 
 
 
 const routes = [
   { path: '/', component: <HomeOne />},
   { path: '/home-v2', component: <HomeTwo />},
+  { path: '/illuminati', component: <Illuminati />},
   { path: '/home-v3', component: <HomeThree />},
   { path: '/buy-crypto-select', component: <BuyCrypto />},
   { path: '/buy-crypto-confirm', component: <BuyCryptoConfirm />},

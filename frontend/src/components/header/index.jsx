@@ -272,7 +272,6 @@ const Header = () => {
                             </div>
                         </div>
                         </div>
-                        <div className={`mobile-button ${menuActive ? 'active' : ''}`} onClick={handleMenuActive}><span></span></div>
                         <div className="wallet">
                         <Link to="/wallet"> Wallets </Link>
                         </div>
