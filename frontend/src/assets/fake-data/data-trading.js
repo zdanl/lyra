@@ -8,22 +8,22 @@ const dataTrading = [
         id: 1,
         icon: img1,
         step: 'step 1',
-        title: 'Download',
-        text: 'Stacks Is A Production-Ready Library Of Stackable Content Blocks Built In React Native.',
+        title: 'Offical Client',
+        text: 'We are aiming for maximum bot and automation averseness. Use an official client',
     },
     {
         id: 2,
         icon: img2,
         step: 'step 2',
-        title: 'Connect Wallet',
-        text: 'Stacks Is A Production-Ready Library Of Stackable Content Blocks Built In React Native.',
+        title: 'Login & Connect Wallet',
+        text: 'Login with your credentials and/or connect via MetaMask or Coinbase Wallet',
     },
     {
         id: 3,
         icon: img3,
         step: 'step 3',
         title: 'Start Trading',
-        text: 'Stacks Is A Production-Ready Library Of Stackable Content Blocks Built In React Native.',
+        text: 'Deposit Funds into Lyra Exchange',
     },
    
 ]

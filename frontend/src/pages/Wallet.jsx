@@ -1,5 +1,6 @@
 import React , {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
+import { useUser } from "../lib/context/user";
 import { account, functions, ID } from '../lib/appwrite.js';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -11,29 +12,23 @@ Wallet.propTypes = {
 };
 
 function Wallet(props) {
-    const [loggedInUser, setLoggedInUser] = useState(null);
+    const user = useUser();
     const [walletsResponse, setWalletsResponse] = useState("{}");
-    const [loggedin, setLoggedin] = useState(false);
+    
     useEffect(() => {
-     (async () => {
-         console.log("Retrieving User ...");
-         setLoggedInUser(await account.get());
-         if (loggedInUser) {
-           setLoggedin(true);
-         }
-         console.log("Got user " + loggedInUser);
-         console.log("Retrieving Crypto Wallets ...");
- const resp = await functions.createExecution(
-        'list_crypto_wallets',
-        JSON.stringify({ 'foo': 'bar' }),
-        false,
-        `/?user_id=${loggedInUser?.$id}`,
-        'GET',
-        { 'X-Custom-Header': '123' }
-    )
+         console.log(`Retrieving Crypto Wallets for ${user.current.$id} ...`);
+         (async () => {
+         const resp = await functions.createExecution(
+            'list_crypto_wallets',
+            JSON.stringify({ 'foo': 'bar' }),
+            false,
+            `/?user_id=${user.current.$id}`,
+            'GET',
+            { 'X-Custom-Header': '123' }
+        )
         setWalletsResponse(resp.responseBody);
-     })();
-    }, [loggedInUser]);
+        })();
+    }, []);
 
     const [dataCryptoTab] = useState([
         {

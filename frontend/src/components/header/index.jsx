@@ -5,6 +5,7 @@ import menus from '../../pages/menu';
 import { Dropdown } from 'react-bootstrap';
 import { account, ID } from '../../lib/appwrite.js';
 import './styles.scss';
+import { useUser } from "../../lib/context/user";
 import logo from '../../assets/images/logo/logo.png';
 import logodark from '../../assets/images/logo/logo-dark.png';
 import avt from '../../assets/images/avt/avt-01.jpg';
@@ -20,13 +21,10 @@ import icon5 from '../../assets/images/flags/russia.jpg'
 
 
 const Header = () => {
-    const [loggedInUser, setLoggedInUser] = useState(null);
     const [scroll, setScroll] = useState(false);
+    const user = useUser();
 
     useEffect(() => {
-    (async () => {
-        setLoggedInUser(await account.get());
-    })();
         window.addEventListener("scroll", () => {
             setScroll(window.scrollY > 300);
         });
@@ -101,7 +99,7 @@ const Header = () => {
                     <div className="header__right">
                         <DarkMode />
 
-                        {loggedInUser &&
+                        {user.current &&
                         <>
                         <div className="dropdown notification">
                         <button
@@ -302,8 +300,8 @@ const Header = () => {
                                     ></i>
                                     <span>Settings</span></Link>
                                 </Dropdown.Item>
-                                <Dropdown.Item href="/login">
-                                    <Link className="dropdown-item text-danger" to="/login"
+                                <Dropdown.Item href="/login?action=logout">
+                                    <Link className="dropdown-item text-danger" to="/login?action=logout"
                                     ><i
                                         className="bx bx-power-off font-size-16 align-middle me-1 text-danger"
                                     ></i>

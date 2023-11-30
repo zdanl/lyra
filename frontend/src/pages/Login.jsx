@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import Sale01 from '../components/sale/Sale01';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from "react-router-dom";
 import { account, ID } from '../lib/appwrite.js';
 import { useNavigate } from "react-router-dom";
-
+import { useUser } from "../lib/context/user";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import PageTitle from '../components/pagetitle';
@@ -17,23 +18,26 @@ Login.propTypes = {
 
 function Login(props) {
     const navigate = useNavigate();
-    const [loggedInUser, setLoggedInUser] = useState(null);
+    const user = useUser();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    (async () => {
-      await account.deleteSession('current');
-    })();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const action = searchParams.get("action");
 
-    async function login(email, password) {
-      await account.createEmailSession(email, password);
-      setLoggedInUser(await account.get());
-      if (loggedInUser) {
-        navigate('/wallet');
+    if (action === "logout") {
+      user.logout();
+      navigate("/login");
+    } else { 
+
+    var timer = setInterval((usr) => {
+      if (usr) {
+        navigate("/wallet");
       }
-    }
+    clearInterval(timer);
 
-    
+    }, 1500, user.current);
+    }
 
     return (
         <div>
@@ -48,7 +52,8 @@ function Login(props) {
                     <div className="block-text center">
                     <h3 className="heading">Login To Lyra</h3>
                     <p className="desc fs-20">
-                        Welcome back! {loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in'}
+
+                        Welcome back! {user.current ? `Logged in as ${user.current.email}` : 'Not logged in'}
                     </p>
                     <div className="lock">
                         <div className="icon">
@@ -91,7 +96,7 @@ function Login(props) {
 
                     <TabPanel>
                         <div className="content-inner">
-                            <form onSubmit={(e) => { e.preventDefault(); login(email, password)}}>
+                            <form onSubmit={(e) => { e.preventDefault(); user.login(email, password)}}>
                                 <div className="form-group">
                                 <label for="exampleInputEmail1">Email/ID</label>
                                 <input
@@ -121,7 +126,7 @@ function Login(props) {
                                 <p>Forgot Password?</p>
                                 </div>
 
-                                <button onClick={(e) => { e.preventDefault(); login(email, password)}} className="btn-action">Login</button>
+                                <button onClick={(e) => { e.preventDefault(); user.login(email, password)}} className="btn-action">Login</button>
                                 <div className="bottom">
                                 <p>Not a member?</p>
                                 <Link to="/register">Register</Link>
