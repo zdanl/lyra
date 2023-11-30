@@ -66,20 +66,20 @@ export default async ({ req, res, log, error }) => {
   for (const doc in resp.documents) {
     eth_balance = 0;
     btc_balance = 0;
-    log(`Retrieving ETH balance for ${doc.eth_address}`);
+    console.log(`Retrieving ETH balance for ${doc.eth_address}`);
     eth_balance = await retrieve_eth_balance(doc.eth_address);
-    log(`Amount: ${eth_balance}`);
+    console.log(`Amount: ${eth_balance}`);
     
-    log(`Retrieving BTC balance for ${doc.btc_address}`);
+    console.log(`Retrieving BTC balance for ${doc.btc_address}`);
     btc_balance = await retrieve_btc_balance(doc.btc_address);
-    log(`Amount: ${btc_balance}`);
+    console.log(`Amount: ${btc_balance}`);
 
     if (eth_balance !== doc.eth_balance || btc_balance !== doc.btc_balance) {
       hydration_count++;
     }
 
     /************ Write to DB **********/
-    log(`Hydrating document ${doc.$id}`);
+    console.log(`Hydrating document ${doc.$id}`);
     await databases.updateDocument('lyra', 'wallets', doc.$id, {
       eth_balance: eth_balance,
       btc_balance: btc_balance,
