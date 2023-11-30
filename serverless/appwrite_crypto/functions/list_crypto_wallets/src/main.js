@@ -1,18 +1,15 @@
 import { ID, Query, Client, Databases } from 'node-appwrite';
-import etherscan from 'etherscan-api';
 
 // This is the retrieval Appwrite function for crypto wallets
 // It's executed each time a user visits the /wallet page
 // or upon API request. It returns in JSON the addresses
-// and balances, network
+// and balances.
 // @zdanl
 
 // @@TODO Security
 // currently everybody who knows a users static internal id
 // can retrieve his/her wallets. ideally one would need to be
 // authenticated as that user
-
-const api = etherscan.init('SRWE28CK9FIB457EERW5IE8T3YCMG43GEE');
 
 export default async ({ req, res, log, error }) => {
   // Invoking the Appwrite SDK?
@@ -29,7 +26,7 @@ export default async ({ req, res, log, error }) => {
   // see if there is a non-root way to deal with appwrite document ownership
   
   const docs = await databases.listDocuments('lyra', 'wallets', [
-    Query.select(["address", "network"]),
+    Query.select(["eth_address", "btc_address", "eth_balance", "btc_balance"]),
     Query.equal("owner", [user_id])
   ]);
 
@@ -37,8 +34,12 @@ export default async ({ req, res, log, error }) => {
 
   docs.documents.map(async (doc) => {
       log(`Currently iterating ${doc.address}`);
-      //const balance = await api.account.balance(doc.address);
-      finalResponse.push({'address': doc.address, 'network': doc.network, 'balance': 0});
+      finalResponse.push({
+        'eth_address': doc.eth_address,
+        'btc_address': doc.btc_address,
+        'eth_balance': doc.eth_balance,
+        'btc_balance': doc.btc_balance
+      });
   });
 
   

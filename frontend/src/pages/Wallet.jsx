@@ -27,6 +27,7 @@ function Wallet(props) {
             'GET',
             { 'X-Custom-Header': '123' }
         )
+        alert(resp.responseBody);
         setWalletsResponse(resp.responseBody);
 
     }
