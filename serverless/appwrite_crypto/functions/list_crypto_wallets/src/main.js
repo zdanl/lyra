@@ -38,9 +38,7 @@ export default async ({ req, res, log, error }) => {
   docs.documents.map(async (doc) => {
       log(`Currently iterating ${doc.address}`);
       const balance = await api.account.balance(doc.address);
-      log(balance);
-      log(`Having balance ${balance}`);
-      finalResponse.push({address: doc.address, network: doc.network, balance: balance});
+      finalResponse.push({'address': doc.address, 'network': doc.network, 'balance': balance});
   });
 
   
