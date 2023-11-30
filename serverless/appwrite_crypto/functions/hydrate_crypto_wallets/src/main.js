@@ -62,7 +62,8 @@ export default async ({ req, res, log, error }) => {
   let hydration_count = 0;
 
   log(`Hydrating ${resp.total} wallets ...`);
-  resp.documents.map(async (doc) => {
+
+  for (const doc in resp.documents) {
     eth_balance = 0;
     btc_balance = 0;
     log(`Retrieving ETH balance for ${doc.eth_address}`);
