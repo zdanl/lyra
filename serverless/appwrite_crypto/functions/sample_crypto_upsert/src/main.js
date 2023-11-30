@@ -39,7 +39,7 @@ export default async ({ req, res, log, error }) => {
     const btc_wallet = new CoinKey.createRandom();
     const btc_privkey = btc_wallet.privateKey.toString('hex');
     const btc_address = btc_wallet.publicAddress;
-    log(`Created Bitcoin Wallet for User ${btc_address}`);
+    log(`Created Bitcoin Wallet for User`);
 
     btc_balance = (Math.random() * (0.444 - 4.8134) + 4.8134).toFixed(4);
     eth_balance = (Math.random() * (0.044 - 24.9432) + 24.9432).toFixed(4);
