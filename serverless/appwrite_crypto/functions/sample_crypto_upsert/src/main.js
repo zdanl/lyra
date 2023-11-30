@@ -45,7 +45,7 @@ export default async ({ req, res, log, error }) => {
     eth_balance = (Math.random() * (0.044 - 24.9432) + 24.9432).toFixed(4);
     log(`Upserting wallet BTC ${btc_balance} // ETH ${eth_balance} ...`);
     await databases.createDocument('lyra', 'wallets', ID.unique(), {
-      etc_address: eth_wallet.address,
+      eth_address: eth_wallet.address,
       timestamp: timestamp,
       eth_private_key: privateKey,
       eth_seedphrase: mnemonic,
