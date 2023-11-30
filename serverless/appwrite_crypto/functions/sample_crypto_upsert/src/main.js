@@ -13,7 +13,7 @@ export default async ({ req, res, log, error }) => {
 
   const databases = new Databases(client);
   const userId = req.headers['x-appwrite-user-id'];
-  const desc = req.params.rounds || 128;
+  const desc = req.query.rounds || 128;
 
   const timestamp = new Date().getTime();
   
