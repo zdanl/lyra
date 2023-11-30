@@ -2,7 +2,7 @@ import React , {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Sale01 from '../components/sale/Sale01';
 import { account, ID } from '../lib/appwrite.js';
-
+import { useUser } from "../lib/context/user";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import PageTitle from '../components/pagetitle';
@@ -14,16 +14,6 @@ UserProfile.propTypes = {
 };
 
 function UserProfile(props) {
-    const [loggedInUser, setLoggedInUser] = useState(null);
-
-    useEffect(() => {
-      
-           (async () => {
-             console.log("Requesting user session...");
-       setLoggedInUser(await account.get());
-     })();
-
-    }, []);
 
     const [dataCoinTab] = useState([
         {
@@ -53,6 +43,14 @@ function UserProfile(props) {
         },
 
     ]);
+     const user = useUser();
+    if (!user.current) {
+ 
+      return (
+        <div className='markets home-2'><section className='banner'>Unauthorized</section></div>
+      );
+    } 
+
     return (
         <div>
 
@@ -76,8 +74,8 @@ function UserProfile(props) {
                                 />
                                 <img id="blah" src={img} alt="no file" />
                             </div>
-                            <h6 className="name">{loggedInUser?.name}</h6>
-                            <p>{loggedInUser?.email}</p>
+                            <h6 className="name">{user?.current?.name}</h6>
+                            <p>{user?.current?.email}</p>
                         </div>
                         {
                             dataCoinTab.map(idx => (
@@ -97,14 +95,14 @@ function UserProfile(props) {
                             <h6>Infomation</h6>
 
                             <div className="form-group d-flex s1">
-                                <input type="text" className="form-control" value={loggedInUser?.name} />
+                                <input type="text" className="form-control" value={user?.current?.name} />
                             </div>
                             <div className="form-group d-flex">
                                 <input
                                 type="email"
                                 className="form-control"
                                 id="exampleInputEmail1"
-                                value={loggedInUser?.email}
+                                value={user?.current?.email}
                                 />
                                 <div className="sl">
                                 <select

@@ -8,16 +8,17 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 import img from '../assets/images/layout/banner-04.png'
+import { useNavigate } from "react-router-dom";
 import dataBlog from '../assets/fake-data/data-blog';
 
 import dataCoin2 from '../assets/fake-data/data-coin-2';
+import { useUser } from "../lib/context/user";
 
 Illuminati.propTypes = {
     
 };
 
 function Illuminati(props) {
-
     const [dataBlock] = useState(
         {
             heading: 'Illuminati Mode',
@@ -45,6 +46,15 @@ function Illuminati(props) {
         },
 
     ]);
+     const user = useUser();
+    const navigate = useNavigate();
+    if (!user.current) {
+      
+      return (
+        <div className='markets home-2'><section className='banner'>Unauthorized</section></div>
+      );
+    }
+
     return (
         <div className='markets home-2'>
 

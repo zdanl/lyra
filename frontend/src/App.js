@@ -24,7 +24,7 @@ function App() {
 
                 {
                     routes.map((data,idx) => (
-                        <Route key={idx} path={data.path} element={data.component} exact />
+                        <Route key={idx} path={data.path} element={data.component} auth={data.auth} illuminati={data.illuminati} exact />
                     ))
                 }
 

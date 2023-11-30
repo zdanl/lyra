@@ -17,7 +17,6 @@ function Wallet(props) {
     const user = useUser();
 
     const [walletsResponse, setWalletsResponse] = useState("[]");
-   
     async function get_wallets() {
       console.log(`Retrieving Crypto Wallets for ${user.current.$id} ...`);
          const resp = await functions.createExecution(
@@ -83,7 +82,16 @@ function Wallet(props) {
             title: 'Deposit Fiat',
         },
     ])
-    return (
+
+      if (!user.current) {
+         
+        return (
+          <div className='markets home-2'><section className='banner'>Unauthorized</section></div>
+        );
+      } 
+ 
+
+return (
         <div>
             <PageTitle heading='Wallet' title='Wallet' />
             <section className="wallet buy-crypto flat-tabs">
@@ -186,7 +194,7 @@ function Wallet(props) {
                             <img src={transak} />
                             </TabPanel>
                             <TabPanel>
-                            Test2
+                            Add support for Fiat Wallets with https://www.npmjs.com/package/@stripe/react-stripe-js
                             </TabPanel>
   
                             

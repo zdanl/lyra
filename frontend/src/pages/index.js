@@ -1,3 +1,5 @@
+import React, { Suspense } from "react";
+
 import HomeOne from "./HomeOne";
 import HomeTwo from "./HomeTwo";
 import HomeThree from "./HomeThree";
@@ -20,14 +22,15 @@ import Login from "./Login";
 import Register from "./Register";
 import Contact from "./Contact";
 import Faq from "./Faq";
-import Illuminati from "./Illuminati";
 
+/* Illuminati Views */
+const Illuminati = React.lazy(() => import("./Illuminati.jsx"));
 
 
 const routes = [
   { path: '/', component: <HomeOne />},
   { path: '/home-v2', component: <HomeTwo />},
-  { path: '/illuminati', component: <Illuminati />},
+  { path: '/illuminati', component: <Illuminati />, auth: true, illuminati: true},
   { path: '/home-v3', component: <HomeThree />},
   { path: '/buy-crypto-select', component: <BuyCrypto />},
   { path: '/buy-crypto-confirm', component: <BuyCryptoConfirm />},
@@ -42,14 +45,12 @@ const routes = [
   { path: '/blog-grid-v2', component: <BlogGrid02 />},
   { path: '/blog-list', component: <BlogList />},
   { path: '/blog-details', component: <BlogDetails />},
-  { path: '/wallet', component: <Wallet />},
-  { path: '/user-profile', component: <UserProfile />},
+  { path: '/wallet', component: <Wallet />, auth: true},
+  { path: '/user-profile', component: <UserProfile />, auth: true},
   { path: '/login', component: <Login />},
   { path: '/register', component: <Register />},
   { path: '/contact', component: <Contact />},
   { path: '/faq', component: <Faq />},
-
-
 ]
 
 export default routes;
