@@ -59,6 +59,7 @@ export default async ({ req, res, log, error }) => {
   // do not by mistake transfer a new balance to a wrong wallet after exception
   let eth_balance = 0;
   let btc_balance = 0;
+  let hydration_count = 0;
 
   log(`Hydrating ${resp.total} wallets ...`);
   resp.documents.map(async (doc) => {
@@ -72,6 +73,10 @@ export default async ({ req, res, log, error }) => {
     btc_balance = await retrieve_btc_balance(doc.btc_address);
     log(`Amount: ${btc_balance}`);
 
+    if (eth_balance !== doc.eth_balance || btc_balance !== doc.btc_balance) {
+      hydration_count++;
+    }
+
     /************ Write to DB **********/
     log(`Hydrating document ${doc.$id}`);
     await databases.updateDocument('lyra', 'wallets', doc.$id, {
@@ -82,7 +87,7 @@ export default async ({ req, res, log, error }) => {
 
   });
   
-  log(`All done ${doc.$id}`);
+  log(`All done. Hydrated ${hydration_count} wallets.`);
 
   /************ Write to DB **********/
 
