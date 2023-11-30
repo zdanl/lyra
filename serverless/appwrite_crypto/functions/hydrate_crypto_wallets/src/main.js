@@ -16,6 +16,7 @@ const btc_api_url = `https://blockchain.info/address/`;
 /* ************** Ethereum ************** */
 const retrieve_eth_balance = async (wallet_address, infura_api_key) => {
 	try {
+    console.log(`Infura API: ${eth_api_url}/${infura_api_key}`);
     var web3Provider = new Web3.providers.HttpProvider(`${eth_api_url}/${infura_api_key}`);
     var web3 = new Web3(web3Provider);
 
