@@ -86,7 +86,7 @@ export default async ({ req, res, log, error }) => {
       last_hydrate: timestamp
     });
 
-  });
+  }
   
   log(`All done. Hydrated ${hydration_count} wallets.`);
 
