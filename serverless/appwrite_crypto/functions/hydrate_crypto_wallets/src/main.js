@@ -20,7 +20,7 @@ const retrieve_eth_balance = async (wallet_address) => {
 			else throw {success: false, error: {message: "Unable to fetch ETH Balance", stack: err}}
 		});
 	} catch (ex) {
-		log(ex);
+		console.log(ex);
 		throw ex;
 	}
 };
