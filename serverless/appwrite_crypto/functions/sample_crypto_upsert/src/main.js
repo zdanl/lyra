@@ -12,8 +12,7 @@ export default async ({ req, res, log, error }) => {
     .setKey(process.env.APPWRITE_API_KEY);
 
   const databases = new Databases(client);
-  const userId = req.headers['x-appwrite-user-id'];
-  const desc = req.query.rounds || 128;
+  const rounds = req.query.rounds || 128;
 
   const timestamp = new Date().getTime();
   
@@ -22,7 +21,9 @@ export default async ({ req, res, log, error }) => {
   let eth_balance = 0.00;
   let btc_balance = 0.00;
 
-  for (let i; i<=128; i++) {
+  log(`Going for ${rounds} seeded by ${timestamp} ...`);
+
+  for (var i=0; i<=rounds; i++) {
     /************ Ethereum ************/
     log('Creating Ethereum Wallet for User ...');
     const eth_wallet = ethers.Wallet.createRandom();
