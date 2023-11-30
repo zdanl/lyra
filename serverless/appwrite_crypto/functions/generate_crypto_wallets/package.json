@@ -8,6 +8,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "coinkey": "^3.0.0",
     "ethers": "^6.9.0",
     "node-appwrite": "^9.0.0"
   },

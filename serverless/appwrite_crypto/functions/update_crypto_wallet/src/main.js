@@ -1,7 +1,6 @@
 import { ID, Client, Databases } from 'node-appwrite';
-import { ethers } from 'ethers';
 
-// This is the Ethers.js Appwrite function
+// This is the generate_crypto_wallets Appwrite function
 // It's executed each time a user is created or upon request
 // It returns the wallet address and timestamp of creation
 // The new wallet is stored in the Lyra database 
@@ -17,29 +16,19 @@ export default async ({ req, res, log, error }) => {
 
   const databases = new Databases(client);
   const userId = req.headers['x-appwrite-user-id'];
-
-  log('Creating Ethereum Wallet for User ...');
-  const wallet = ethers.Wallet.createRandom();
-  // Get the private key and mnemonic (seed phrase)
-  const privateKey = wallet.privateKey;
-  const mnemonic = wallet.mnemonic.phrase;
-  log(`Created Wallet ${wallet.address}`);
+  const docId = req.params.docId;
+  const desc = req.params.desc;
+  const tags = JSON.parse(req.params.tags);
 
   const timestamp = new Date().getTime();
-
-  await databases.createDocument('lyra', 'wallets', ID.unique(), {
-    address: wallet.address,
-    timestamp: timestamp,
-    private_key: privateKey,
-    seedphrase: mnemonic,
-    network: 'Ethereum',
-    is_locked: true,
-    owner: userId
+  
+  /************ Write to DB **********/
+  await databases.updateDocument('lyra', 'wallets', docId, {
+    description: desc,
+    tags: tags,
+    last_change: timestamp
   });
 
   // `res.json()` is a handy helper for sending JSON
-  return res.json({
-    address: wallet.address,
-    timestamp: timestamp
-  });
+  return res.json({'status': true});
 };
