@@ -97,6 +97,7 @@ const Header = () => {
                     </div>
 
                     <div className="header__right">
+                        {user?.current?.email || user?.current?.providerUid}
                         <DarkMode />
 
                         {user.current &&

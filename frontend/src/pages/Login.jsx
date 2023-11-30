@@ -53,7 +53,7 @@ function Login(props) {
                     <h3 className="heading">Login To Lyra</h3>
                     <p className="desc fs-20">
 
-                        Welcome back! {user.current ? `Logged in as ${user.current.email}` : 'Not logged in'}
+                        Welcome back! {user.current ? `Logged in as ${user.current.email || user.current.providerUid}` : 'Not logged in'}
                     </p>
                     <div className="lock">
                         <div className="icon">

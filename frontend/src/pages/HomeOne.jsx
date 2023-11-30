@@ -31,6 +31,8 @@ function HomeOne(props) {
 
             <About01 />
             
+<Sale01 />
+
         </div>
     );
 }

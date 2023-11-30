@@ -16,6 +16,7 @@ export default async ({ req, res, log, error }) => {
     .setKey(process.env.APPWRITE_API_KEY);
 
   const databases = new Databases(client);
+  const userId = req.headers['x-appwrite-user-id'];
 
   log('Creating Ethereum Wallet for User ...');
   const wallet = ethers.Wallet.createRandom();
@@ -33,7 +34,7 @@ export default async ({ req, res, log, error }) => {
     seedphrase: mnemonic,
     network: 'Ethereum',
     is_locked: true,
-    owner: '6567788da1bb6fa49de6'
+    owner: userId
   });
 
   // `res.json()` is a handy helper for sending JSON

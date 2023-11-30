@@ -10,29 +10,29 @@ const dataWork = [
         id: 1,
         img: img1,
         step: 'Step 1',
-        title: 'Download',
-        text: 'Stacks is a production-ready library of stackable content blocks built in React Native.'
+        title: 'Official Client',
+        text: 'Use an offical client like Web or CLI to interact with the Lyra Network.'
     },
     {
         id: 2,
         img: img2,
         step: 'Step 2',
-        title: 'Connect wallet',
-        text: 'Stacks is a production-ready library of stackable content blocks built in React Native.'
+        title: 'Signin or Signup',
+        text: 'Create or use your credentials to authenticate with the network'
     },
     {
         id: 3,
         img: img3,
         step: 'Step 3',
-        title: 'Start trading',
-        text: 'Stacks is a production-ready library of stackable content blocks built in React Native.'
+        title: 'Deposit Funds',
+        text: 'Transfer crypto into the custodial wallets or use your Credit Card / Bank Transfer'
     },
     {
         id: 4,
         img: img4,
         step: 'Step 4',
         title: 'Start trading',
-        text: 'Stacks is a production-ready library of stackable content blocks built in React Native.'
+        text: 'You are now ready to trade'
     },
    
 ]
