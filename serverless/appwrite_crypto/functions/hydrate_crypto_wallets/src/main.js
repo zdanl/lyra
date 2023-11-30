@@ -70,6 +70,7 @@ export default async ({ req, res, log, error }) => {
   log(`Hydrating ${resp.total} wallets ...`);
 
   for (const doc in resp.documents) {
+    console.log(`Doc: ${doc}`);
     eth_balance = 0;
     btc_balance = 0;
     console.log(`Retrieving ETH balance for ${doc.eth_address}`);
