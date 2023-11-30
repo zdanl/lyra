@@ -55,3 +55,6 @@ You can see market developments in crypto in real-time.
 
 </p>
 
+
+![appwrite](https://github.com/zdanl/lyra/assets/114028070/02757ade-456d-40ee-95eb-28868eb1f106)
+
