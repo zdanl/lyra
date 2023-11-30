@@ -2,6 +2,7 @@ import { ID, Client, Databases } from 'node-appwrite';
 import { ethers } from 'ethers';
 
 // Bitcoin @TODO security review
+// coinkey?
 import CoinKey from 'coinkey';
 
 // This is the generate_crypto_wallets Appwrite function

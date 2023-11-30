@@ -153,7 +153,7 @@ return (
                                     </tr>
                                     </thead>
                                     <tbody>
-                                     {JSON.parse(walletsResponse).map((wallet) => (
+                                     {JSON.parse(walletsResponse || "[]").map((wallet) => (
                                     <tr>
                                         <td className="number">
                                         <span>1</span>
