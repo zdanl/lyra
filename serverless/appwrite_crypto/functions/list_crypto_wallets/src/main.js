@@ -35,12 +35,12 @@ export default async ({ req, res, log, error }) => {
 
   let finalResponse = [];
 
-  docs.documents.map(doc => {
+  docs.documents.map((doc) => async (
       log(`Currently iterating ${doc.address}`);
       const balance = await api.account.balance(doc.address).result;
       log(`Having balance ${balance}`);
       finalResponse.push({address: doc.address, network: doc.network, balance: balance});
-  });
+  ));
 
   
   // for debugging
