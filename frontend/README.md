@@ -1,70 +1,57 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+<p align="center">
+<img src="https://img.shields.io/github/license/appwrite/sdk-for-web.svg?style=flat-square" alt="License" />
+<img src="https://img.shields.io/badge/api%20version-1.4.12-blue.svg?style=flat-square" alt="Version" />
+<a href="https://travis-ci.com/appwrite/sdk-generator"><img src="https://img.shields.io/travis/com/appwrite/sdk-generator?style=flat-square" alt="Build Status" /></a>
+<a href="https://twitter.com/appwrite"><img src="https://img.shields.io/twitter/follow/appwrite?color=00acee&amp;label=twitter&amp;style=flat-square" alt="Twitter Account" /></a>
+<a href="https://appwrite.io/discord"><img src="https://img.shields.io/discord/564160730845151244?label=discord&amp;style=flat-square" alt="Discord" /></a></p>
+</p>
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<p align="center">
+<img src="https://github.com/zdanl/lyra/assets/114028070/e2ed728b-780a-4209-8d1b-64d593aad210" alt="License" />
+</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<p align="center">
+  <i> The Lyra ReactJS Frontend 🚀</i>
+</p>
 
-### `npm test`
+<h4 align="center">
+  <a href="https://amplication.com/discord">
+    <img src="https://img.shields.io/badge/discord-7289da.svg?style=flat-square" alt="discord">
+  </a>
+  <a href="https://twitter.com/amplication">
+    <img src="https://img.shields.io/badge/twitter-18a1d6.svg?style=flat-square" alt="twitter">
+  </a>
+  <a href="https://www.youtube.com/c/Amplicationcom">
+    <img src="https://img.shields.io/badge/youtube-d95652.svg?style=flat-square&" alt="youtube">
+  </a>
+</h4>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+There is not much to say here. The React application compiles to HTML, JS, CSS files and runs completely standalone
+in the browser. It uses fetch() requests to interact with the Appwrite API and update state. It is supposed to be
+highly obfuscated and browser automation hell.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p align="center">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<img width="1632" alt="Screenshot 2023-11-29 at 21 33 55" src="https://github.com/zdanl/lyra/assets/114028070/fb4f0c85-5c3c-4a33-b833-60cc1e99c24d">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Wallets
 
-### `npm run eject`
+The depo offers wallets in fiat, Bitcoin and Ethereum. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<img width="1632" alt="Screenshot 2023-11-29 at 21 33 49" src="https://github.com/zdanl/lyra/assets/114028070/32456732-aaa3-4f1e-9854-c2c0886a1e24">
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Markets
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+You can see market developments in crypto in real-time.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<img width="1632" alt="Screenshot 2023-11-29 at 21 34 21" src="https://github.com/zdanl/lyra/assets/114028070/80f2eedb-df43-413e-8681-b608858d8aa2">
 
-## Learn More
+</p>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
