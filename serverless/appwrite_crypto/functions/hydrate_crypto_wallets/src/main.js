@@ -43,7 +43,7 @@ const retrieve_btc_balance = async (wallet_address) => {
     return data.final_balance;
 
   } catch (error) {
-    error('Error fetching BTC data:', error);
+    console.log('Error fetching BTC data:', error);
   }
 };
 
