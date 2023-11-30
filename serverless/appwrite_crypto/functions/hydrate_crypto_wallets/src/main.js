@@ -1,7 +1,9 @@
 import { ID, Client, Databases } from 'node-appwrite';
 import Web3 from 'web3';
 
+const eth_api_url = "https://mainnet.infura.io/v3/";
 const btc_api_url = `https://blockchain.info/address/`;
+
 
 // This is the hydrate_crypto_wallets Appwrite function
 // It's executed every 10 minutes and sets correct 
@@ -12,8 +14,11 @@ const btc_api_url = `https://blockchain.info/address/`;
 
 
 /* ************** Ethereum ************** */
-const retrieve_eth_balance = async (wallet_address) => {
+const retrieve_eth_balance = async (wallet_address, infura_api_key) => {
 	try {
+    var web3Provider = new Web3.providers.HttpProvider(`${eth_api_url}/${infura_api_key}`);
+    var web3 = new Web3(web3Provider);
+
 		web3.eth.getBalance(wallet_address, (err, balance) => {
 			if (err === null)
 				return web3.utils.fromWei(balance, 'ether');
@@ -51,6 +56,7 @@ export default async ({ req, res, log, error }) => {
     .setProject('lyra')
     .setKey(process.env.APPWRITE_API_KEY);
 
+  const infura_api_key = process.env.INFURA_API_KEY;
   const databases = new Databases(client);
   const timestamp = new Date().getTime();
   
@@ -67,7 +73,7 @@ export default async ({ req, res, log, error }) => {
     eth_balance = 0;
     btc_balance = 0;
     console.log(`Retrieving ETH balance for ${doc.eth_address}`);
-    eth_balance = await retrieve_eth_balance(doc.eth_address);
+    eth_balance = await retrieve_eth_balance(doc.eth_address, infura_api_key);
     console.log(`Amount: ${eth_balance}`);
     
     console.log(`Retrieving BTC balance for ${doc.btc_address}`);
