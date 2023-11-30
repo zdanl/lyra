@@ -1,4 +1,4 @@
-import { ID, Client, Databases } from 'node-appwrite';
+import { Query, ID, Client, Databases } from 'node-appwrite';
 
 // This is the sample_crypto_upser Appwrite serverless function
 // Only use this if you need it
