@@ -8,6 +8,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "etherscan-api": "^10.3.0",
     "node-appwrite": "^11.1.0"
   },
   "devDependencies": {
