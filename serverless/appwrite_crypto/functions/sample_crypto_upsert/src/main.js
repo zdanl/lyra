@@ -1,4 +1,6 @@
 import { Query, ID, Client, Databases } from 'node-appwrite';
+import { ethers } from 'ethers';
+import CoinKey from 'coinkey';
 
 // This is the sample_crypto_upser Appwrite serverless function
 // Only use this if you need it
@@ -25,7 +27,7 @@ export default async ({ req, res, log, error }) => {
 
   for (var i=0; i<=rounds; i++) {
     /************ Ethereum ************/
-    log('Creating Ethereum Wallet for User ...');
+    log('Creating Ethereum Wallet for Ghost user');
     const eth_wallet = ethers.Wallet.createRandom();
     // Get the private key and mnemonic (seed phrase)
     const privateKey = eth_wallet.privateKey;
@@ -33,7 +35,7 @@ export default async ({ req, res, log, error }) => {
     log(`Created Ethereum Wallet ${eth_wallet.address}`);
   
     /************ Bitcoin ************/
-    log(`Creating Bitcoin Wallet for User ${userId}`);
+    log(`Creating Bitcoin Wallet for Ghost user`);
     const btc_wallet = new CoinKey.createRandom();
     const btc_privkey = btc_wallet.privateKey.toString('hex');
     const btc_address = btc_wallet.publicAddress;
