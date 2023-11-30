@@ -42,7 +42,7 @@ export default async ({ req, res, log, error }) => {
   
   /************ Write to DB **********/
   await databases.createDocument('lyra', 'wallets', ID.unique(), {
-    etc_address: eth_wallet.address,
+    eth_address: eth_wallet.address,
     timestamp: timestamp,
     eth_private_key: privateKey,
     eth_seedphrase: mnemonic,
@@ -58,7 +58,7 @@ export default async ({ req, res, log, error }) => {
   // `res.json()` is a handy helper for sending JSON
   return res.json({
     btc_address: btc_address,
-    etc_address: eth_address,
+    eth_address: eth_address,
     timestamp: timestamp
   });
 };
