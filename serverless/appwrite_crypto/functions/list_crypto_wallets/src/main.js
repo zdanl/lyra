@@ -38,6 +38,7 @@ export default async ({ req, res, log, error }) => {
   docs.documents.map(doc => {
       log(`Currently iterating ${doc.address}`);
       const balance = api.account.balance(doc.address).result;
+      log(`Having balance ${balance}`);
       finalResponse.push({address: doc.address, network: doc.network, balance: balance});
   });
 
@@ -45,7 +46,7 @@ export default async ({ req, res, log, error }) => {
   // for debugging
   //const docs = await databases.listDocuments('lyra', 'wallets');
 
-  log(finalResponse);
+  log("Final: " + finalResponse);
 
   // `res.json()` is a handy helper for sending JSON
   // you must iterate/map through this an filter privatekeys etc. 
