@@ -56,13 +56,13 @@ const Header = () => {
                         <NavLink to='/' className="light">
                             <img
                             src={logo}
-                            alt="Lyra CEX"
+                            alt="Lyra Swap"
                             />
                         </NavLink>
                         <NavLink to='/' className="dark">
                             <img
                             src={logodark}
-                            alt="Lyra CEX"
+                            alt="Lyra Swap"
                             />
                         </NavLink>
                         </div>
@@ -279,7 +279,7 @@ const Header = () => {
                         
                         <Dropdown className='user'>
                                 <Dropdown.Toggle >
-                                    <img src={avt} alt="Lyra CEX" />  
+                                    <img src={avt} alt="Lyra Swap" />  
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>

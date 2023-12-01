@@ -191,7 +191,7 @@ function SellCryptoConfirm(props) {
                                         </div>
                                         <div className="content">
                                             <p>For</p>
-                                            <h6 className="price">Lyra CEX</h6>
+                                            <h6 className="price">Lyra Swap</h6>
                                         </div>
                                         </li>
                                     </ul>
@@ -402,7 +402,7 @@ function SellCryptoConfirm(props) {
                                         </div>
                                         <div className="content">
                                             <p>For</p>
-                                            <h6 className="price">Lyra CEX</h6>
+                                            <h6 className="price">Lyra Swap</h6>
                                         </div>
                                         </li>
                                     </ul>
@@ -613,7 +613,7 @@ function SellCryptoConfirm(props) {
                                         </div>
                                         <div className="content">
                                             <p>For</p>
-                                            <h6 className="price">Lyra CEX</h6>
+                                            <h6 className="price">Lyra Swap</h6>
                                         </div>
                                         </li>
                                     </ul>

@@ -33,7 +33,7 @@ function Banner02(props) {
                 </div>
                 <div className="col-xl-6 col-md-12">
                     <div className="banner__image">
-                    <img src={img} alt="Lyra CEX" />
+                    <img src={img} alt="Lyra Swap" />
                     </div>
                 </div>
                 </div>

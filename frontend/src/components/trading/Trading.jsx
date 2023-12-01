@@ -14,7 +14,7 @@ function Trading(props) {
     const [dataBlock] = useState(
         {
             heading: '3 steps easy trading',
-            desc : 'Lyra CEX has a variety of features that make it the best place to start trading'
+            desc : 'Lyra Swap has a variety of features that make it the best place to start trading'
         }
     )
     return (
@@ -23,7 +23,7 @@ function Trading(props) {
                 <div className="row">
                 <div className="col-xl-6 col-md-12">
                     <div className="trading__image">
-                    <img src={img} alt="Lyra CEX" />
+                    <img src={img} alt="Lyra Swap" />
                     </div>
                 </div>
                 <div className="col-xl-6 col-md-12">
@@ -41,7 +41,7 @@ function Trading(props) {
                         {
                             data.map(idx => (
                                 <li key={idx.id}>
-                                    <img src={idx.icon} alt="Lyra CEX" />
+                                    <img src={idx.icon} alt="Lyra Swap" />
                                     <div className="content">
                                         <p className="step">{idx.step}</p>
                                         <h6 className="title">{idx.title}</h6>

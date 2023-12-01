@@ -11,14 +11,14 @@ function Footer(props) {
 
     const [productLink] = useState([
         {
-            title: 'Lyra CEX',
+            title: 'Lyra Swap',
             path: '/'
         }
     ]);
     const [servicesLink] = useState([
         {
             title: 'API',
-            path: 'https://api.exchange.lyra.ly'
+            path: 'https://api.lyra.ly'
         }
     ]);
 
@@ -27,6 +27,10 @@ function Footer(props) {
         {
             icon: 'icon-twitter',
             path: '#'
+        },
+        {
+            icon: 'icon-github',
+            path: 'https://github.com/zdanl/lyra'
         }
     ])
     
@@ -70,8 +74,7 @@ function Footer(props) {
                         </Link>
                         <h6>Let's talk! 🤙</h6>
                         <ul className="list">
-                        <li><p>+12 345 678 9101</p></li>
-                        <li><p>support@lyra.ly</p></li>
+                        <li><p>z@zulla.dev</p></li>
                         <li>
                             <p>
                             </p>
@@ -105,19 +108,6 @@ function Footer(props) {
                     </div>
                     <div className="col-xl-4 col-md-12">
                     <div className="footer-contact">
-                        <h5>Newletters</h5>
-                        <p>
-                        Subscribe our newsletter to get more free design course and
-                        resource.
-                        </p>
-                        <form action="#">
-                        <input
-                            type="email"
-                            placeholder="Enter your email"
-                            required=""
-                        />
-                        <button type="submit" className="btn-action">Submit</button>
-                        </form>
                         <ul className="list-social">
                             {
                                 listSocial.map((data,idx) => (
@@ -135,7 +125,7 @@ function Footer(props) {
             <div className="container-fluid">
                 <div className="footer__bottom">
                 <p>
-                    ©2022 Lyra.ly. All rights reserved.
+                    © 2023 Lyra.ly. All rights reserved.
                 </p>
                 </div>
             </div>

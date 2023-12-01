@@ -16,7 +16,6 @@ export function UserProvider(props) {
     console.log(`User ${user.providerUid} successfully logged in.`);
   }
 
-
   async function logout() {
     await account.deleteSession("current");
     setUser(null);

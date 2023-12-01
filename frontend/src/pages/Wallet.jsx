@@ -15,9 +15,11 @@ Wallet.propTypes = {
 
 function Wallet(props) {
     const user = useUser();
-
+    const [isLoading, setIsLoading] = useState(false);
     const [walletsResponse, setWalletsResponse] = useState("[]");
+    
     async function get_wallets() {
+      
       console.log(`Retrieving Crypto Wallets for ${user.current.$id} ...`);
          const resp = await functions.createExecution(
             'list_crypto_wallets',
@@ -27,7 +29,6 @@ function Wallet(props) {
             'GET',
             { 'X-Custom-Header': '123' }
         )
-        alert(resp.responseBody);
         setWalletsResponse(resp.responseBody);
 
     }

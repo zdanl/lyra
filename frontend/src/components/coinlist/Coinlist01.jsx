@@ -102,7 +102,7 @@ function Coinlist01(props) {
                                                             <td className="boild">{idx.price}</td>
                                                             <td className={`${idx.class}`}>{idx.sale}</td>
                                                             <td className="boild">{idx.cap}</td>
-                                                            <td><img src={idx.chart} alt="Lyra CEX" /></td>
+                                                            <td><img src={idx.chart} alt="Lyra Swap" /></td>
                                                             <td><Link to="#" className="btn">Trade</Link></td>
                                                         </tr>
                                                     ))

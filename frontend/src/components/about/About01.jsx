@@ -105,7 +105,7 @@ function About01(props) {
                                     <img
                                         className="img-main"
                                         src={idx.img}
-                                        alt="Lyra CEX"
+                                        alt="Lyra Swap"
                                     />
                                 </SwiperSlide>
                                 
@@ -119,7 +119,7 @@ function About01(props) {
                                 key={idx.id}
                                 className={ `icon ${idx.class}`}
                                 src={idx.img}
-                                alt="Lyra CEX"
+                                alt="Lyra Swap"
                             />
                         ))
                     }

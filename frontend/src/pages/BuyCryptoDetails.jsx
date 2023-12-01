@@ -121,7 +121,7 @@ function BuyCryptoDetails(props) {
                                     </div>
                                 </div>
                                 <p>
-                                    You successfully bought 1.356 <span>BTC</span> for Lyra CEX!
+                                    You successfully bought 1.356 <span>BTC</span> for Lyra Swap!
                                 </p>
 
                                 <ul className="status">
@@ -360,7 +360,7 @@ function BuyCryptoDetails(props) {
                                     </div>
                                 </div>
                                 <p>
-                                    You successfully bought 1.356 <span>BTC</span> for Lyra CEX!
+                                    You successfully bought 1.356 <span>BTC</span> for Lyra Swap!
                                 </p>
 
                                 <ul className="status">
@@ -599,7 +599,7 @@ function BuyCryptoDetails(props) {
                                     </div>
                                 </div>
                                 <p>
-                                    You successfully bought 1.356 <span>BTC</span> for Lyra CEX!
+                                    You successfully bought 1.356 <span>BTC</span> for Lyra Swap!
                                 </p>
 
                                 <ul className="status">

@@ -25,8 +25,8 @@ function Banner01(props) {
 
     const [dataBlock] = useState(
         {
-            title: 'Lyra Vault',
-            desc : 'Thanks for doing business with Lyra. Here you can deposit money into our vault or withdraw your options.',
+            title: 'Lyra Swap',
+            desc : 'Thanks for doing business with Lyra. Here you can deposit crypto into our exchange and withdraw when the time is right. This exchange and swap is merely a Demo of a Github repository, and although it is functional, we do not recommend to deposit real money right now.',
             title2: 'Our Partners'
         }
     );
@@ -55,7 +55,7 @@ function Banner01(props) {
                                     data.map(idx => (
                                         <SwiperSlide key={idx.id}>
                                             <Link to="#">
-                                                <img src={idx.img} alt="Lyra CEXs"/>
+                                                <img src={idx.img} alt="Lyra Swaps"/>
                                             </Link>
                                         </SwiperSlide>
                                         
@@ -68,7 +68,7 @@ function Banner01(props) {
                     </div>
                     <div className="col-xl-6 col-md-12">
                         <div className="banner__image">
-                        <img src={img1} alt="Lyra CEX" />
+                        <img src={img1} alt="Lyra Swap" />
                         </div>
                     </div>
                     </div>

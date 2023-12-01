@@ -35,7 +35,7 @@ function Work01(props) {
                             data.map(idx => (
                                 <div className="work-box" key={idx.id}>
                                     <div className="image">
-                                    <img src={idx.img} alt="Lyra CEX" />
+                                    <img src={idx.img} alt="Lyra Swap" />
                                     </div>
                                     <div className="content">
                                     <p className="step">{idx.step}</p>
@@ -45,7 +45,7 @@ function Work01(props) {
                                     <img
                                     className="line"
                                     src={line}
-                                    alt="Lyra CEX"
+                                    alt="Lyra Swap"
                                     />
                                 </div>
                             ))

@@ -42,7 +42,7 @@ function Blog(props) {
                         <div key={idx.id} className="col-md-4">
                             <div className="blog-box">
                             <div className="box-image">
-                                <img src={idx.img} alt="Lyra CEX" />
+                                <img src={idx.img} alt="Lyra Swap" />
                                 <div className="wrap-video">
                                 <Link
                                     to="#"

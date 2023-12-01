@@ -13,7 +13,7 @@ function Banner03(props) {
     const [dataBlock] = useState(
         {
             title: 'Learn, buy & sell crypto easily',
-            desc : 'Lyra CEX is the easiest place to buy and sell cryptocurrency. Sign up and get started today.',
+            desc : 'Lyra Swap is the easiest place to buy and sell cryptocurrency. Sign up and get started today.',
         }
     );
     return (
@@ -29,7 +29,7 @@ function Banner03(props) {
                     <Button title='Start trading' path='#' />
                     </div>
                     <div className="banner__image">
-                    <img src={img} alt="Lyra CEX" />
+                    <img src={img} alt="Lyra Swap" />
                     </div>
                 </div>
                 </div>

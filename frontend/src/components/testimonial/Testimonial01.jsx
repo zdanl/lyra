@@ -45,13 +45,13 @@ function Testimonial01(props) {
                     <div className="swiper swiper-thumb1">
                         <div className="swiper-wrapper list-img">
                         <div className="swiper-slide">
-                            <img src={avt1} alt="Lyra CEX" />
+                            <img src={avt1} alt="Lyra Swap" />
                         </div>
                         <div className="swiper-slide">
-                            <img src={avt2} alt="Lyra CEX" />
+                            <img src={avt2} alt="Lyra Swap" />
                         </div>
                         <div className="swiper-slide">
-                            <img src={avt3} alt="Lyra CEX" />
+                            <img src={avt3} alt="Lyra Swap" />
                         </div>
                         </div>
                     </div>
@@ -78,13 +78,13 @@ function Testimonial01(props) {
                                     </h6>
                                     <div className="bottom">
                                     <div className="info">
-                                        <img src={idx.avt} alt="Lyra CEX" />
+                                        <img src={idx.avt} alt="Lyra Swap" />
                                         <div className="content">
                                         <h6 className="name">{idx.name}</h6>
                                         <p className="position">{idx.position}</p>
                                         </div>
                                     </div>
-                                    <img src={idx.partner} alt="Lyra CEX" />
+                                    <img src={idx.partner} alt="Lyra Swap" />
                                     </div>
                                 </div>
                             </SwiperSlide>

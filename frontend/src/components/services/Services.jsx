@@ -27,7 +27,7 @@ function Services(props) {
                             data.map(idx => (
                                 <div key={idx.id} className="services-box">
                                     <div className="icon">
-                                        <img src={idx.icon} alt="Lyra CEX" />
+                                        <img src={idx.icon} alt="Lyra Swap" />
                                     </div>
                                     <Link to="#" className="h6 title">{idx.title}</Link>
                                     <p>
@@ -46,7 +46,7 @@ function Services(props) {
                         {dataBlock.desc}
                     </p>
                     <Button title='Let’s Trade Now' path="#" />
-                    <img src={img} alt="Lyra CEX" />
+                    <img src={img} alt="Lyra Swap" />
                     </div>
                     
                 </div>

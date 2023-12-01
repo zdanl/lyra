@@ -191,7 +191,7 @@ function Login(props) {
                     <img src={img} alt="" />
                     <h6 className="fs-20">Login with QR code</h6>
                     <p className="fs-14">
-                        Scan this code with the <span>Lyra CEX mobile app</span> <br />
+                        Scan this code with the <span>Lyra Swap mobile app</span> <br />
                         to log in instantly.
                     </p>
                     </div>
