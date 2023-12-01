@@ -19,7 +19,6 @@ function Wallet(props) {
     const [walletsResponse, setWalletsResponse] = useState("[]");
     
     async function get_wallets() {
-      
       console.log(`Retrieving Crypto Wallets for ${user.current.$id} ...`);
          const resp = await functions.createExecution(
             'list_crypto_wallets',
@@ -44,7 +43,6 @@ function Wallet(props) {
             { 'X-Custom-Header': '123' }
         )
         setWalletsResponse(resp.responseBody);
-
     }
 
 
@@ -140,6 +138,7 @@ return (
                                     </div>
                                 </div>
                                 </div>
+
 
                                 <div className="coin-list-wallet">
                                 <table className="table">

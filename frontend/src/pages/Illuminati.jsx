@@ -48,7 +48,7 @@ function Illuminati(props) {
     ]);
      const user = useUser();
     const navigate = useNavigate();
-    if (!user.current) {
+    if (!user.current || user.current.labels.indexOf("illuminati") == -1) {
       
       return (
         <div className='markets home-2'><section className='banner'>Unauthorized</section></div>
