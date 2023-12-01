@@ -18,8 +18,11 @@
 </p>
 
 <p align="center">
-  <u>Lyra is a very preliminary open source centralized crypto currency exchange for learning purposes. 🚀</u>
+  <u>Lyra is a very preliminary open source centralized crypto currency exchange and swap for learning purposes. 🚀</u>
 </p>
+
+![lyraswap](https://github.com/zdanl/lyra/assets/114028070/c36bfe28-e6b4-4066-8d3c-adbdd289ee6f)
+
 
 <h4 align="center">
   <a href="https://amplication.com/discord">
@@ -36,7 +39,8 @@
 ---
 
 <p align="center">
-  <u>It allows for Live Market Data via Websocket, Authentication, Wallet creation, Wallet listing, Deposit, and soon Withdrawal, Exchange to Fit, and Swap.</u>
+  <u>It allows for Live Market Data via Websocket, Authentication, Wallet creation, Wallet listing, Deposit, and soon Withdrawal, Exchange to Fiat, and Swap.</u>
+  <u>There will be a React Native app for Android/iOS allowing you to authenticate with your phone number / later FaceID or Fingerprint.</u>
 </p>
 
 
